@@ -27,7 +27,7 @@ func RandomValidation(in try.Result[string]) try.Result[string] {
 	})
 }
 
-func main() {
+func dataSetExample() {
 	data := []string{"2", "4444", "44", "44fas", "ih"}
 
 	step1 := try.Map(try.To(Reverse))(try.PassSlice(data))
@@ -43,4 +43,23 @@ func main() {
 	for _, e := range fail {
 		fmt.Println("  ", e.Error())
 	}
+}
+
+func singleValueExample(data string) {
+	step1 := try.To(Reverse)(try.Pass(data))
+	step2 := RandomValidation(step1)
+	step3 := try.To(strconv.Atoi)(step2)
+
+	switch res := step3.(type) {
+	case try.Ok[int]:
+		fmt.Println("I did it!:", res.Value)
+	case try.Error:
+		fmt.Println("I failed:", res.Value)
+	}
+}
+
+func main() {
+	dataSetExample()
+	singleValueExample("44")
+	singleValueExample("ih")
 }
