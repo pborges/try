@@ -13,7 +13,6 @@ throws an error if the input value is "hi"
 
 ## Processing example
 
----
 
 ```go
 func main(){
@@ -39,8 +38,6 @@ I failed: no hi. only zulu
 ```
 
 ## Dataset processing example
-
----
 
 ```go
 func main(){
