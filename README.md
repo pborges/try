@@ -11,7 +11,7 @@ simply reverses a string
 
 throws an error if the input value is "hi"
 
-```
+```go
 func main(){
     // Normal lookin data
     data := []string{"2", "4444", "44", "44fas", "ih"}
