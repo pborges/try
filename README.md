@@ -23,9 +23,9 @@ func main(){
         
         switch res := step3.(type) {
         case try.Ok[int]:
-        fmt.Println("I did it!:", res.Value)
+            fmt.Println("I did it!:", res.Value)
         case try.Error:
-        fmt.Println("I failed:", res.Value)
+            fmt.Println("I failed:", res.Value)
         }
     }
 }
