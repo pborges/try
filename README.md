@@ -7,12 +7,11 @@
 
 simply reverses a string
 
-**ASSUMING** `RandomValidation(in try.Result[string]) try.Result[string]` 
+**ASSUMING** `RandomValidation(try.Result[string]) try.Result[string]` 
 
 throws an error if the input value is "hi"
 
 ## Processing example
-
 
 ```go
 func main(){
@@ -53,7 +52,7 @@ func main(){
     pass, fail := try.Collect(step3)
     
     // Print outptus
-    fmt.Println("PASS:")
+    fmt.Println("Pass:")
     for _, e := range pass {
         fmt.Println("  ", e)
     }

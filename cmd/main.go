@@ -19,17 +19,15 @@ func Reverse(v string) (string, error) {
 }
 
 func RandomValidation(in try.Result[string]) try.Result[string] {
-	return try.IfOk(in, func(in try.Ok[string]) try.Result[string] {
-		if in.Value == "hi" {
+	return try.IfOk(in, func(res try.Ok[string]) try.Result[string] {
+		if res.Value == "hi" {
 			return try.Fail[string](errors.New("no hi. only zulu"))
 		}
-		return in
+		return res
 	})
 }
 
-func dataSetExample() {
-	data := []string{"2", "4444", "44", "44fas", "ih"}
-
+func dataSetExample(data ...string) {
 	step1 := try.Map(try.To(Reverse))(try.PassSlice(data))
 	step2 := try.Map(RandomValidation)(step1)
 	step3 := try.Map(try.To(strconv.Atoi))(step2)
@@ -59,7 +57,7 @@ func singleValueExample(data string) {
 }
 
 func main() {
-	dataSetExample()
+	dataSetExample("2", "4444", "44", "44fas", "ih")
 	singleValueExample("44")
 	singleValueExample("ih")
 }
